@@ -2,8 +2,8 @@ package com.riwi.RiwiMovies.entities;
 
 import jakarta.persistence.*;
 
-@Entity
-@Table(name = "user")
+@Entity(name = "user_entity")
+// lombok, validation y swagger
 public class UserEntity {
 
     @Id
@@ -12,15 +12,25 @@ public class UserEntity {
     private String name;
     private String email;
     private String password;
+    private Boolean status;
 
     public UserEntity() {
     }
 
-    public UserEntity(String id, String password, String name, String email) {
+    public UserEntity(String id, String password, String name, String email, Boolean status) {
         this.id = id;
         this.password = password;
         this.name = name;
         this.email = email;
+        this.status = status;
+    }
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
     }
 
     public String getId() {
@@ -62,6 +72,7 @@ public class UserEntity {
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
+                ", status=" + status +
                 '}';
     }
 }
