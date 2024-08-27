@@ -1,44 +1,23 @@
-package com.riwi.RiwiMovies.entities;
-
-import jakarta.persistence.*;
+package com.riwi.RiwiMovies.dtos.request;
 
 import java.sql.Time;
-import java.util.List;
 
-@Entity
-public class Movie {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class MovieWithoutRating {
     private Long id;
-
-    @Column(nullable = false)
     private String title;
-
-    @Column(nullable = false)
     private String genre;
-
     private Time duration;
-
-    @Column(nullable = false)
-    private Integer rating = 0;
-
-    @Column(nullable = false)
     private Float price;
 
-    @OneToMany
-    private List<Purchase> purchases;
-
-    public Movie() {
+    public MovieWithoutRating() {
     }
 
-    public Movie(Float price, Integer rating, Time duration, String genre, String title, Long id) {
-        this.price = price;
-        this.rating = rating;
-        this.duration = duration;
-        this.genre = genre;
-        this.title = title;
+    public MovieWithoutRating(Long id, String title, String genre, Time duration, Float price) {
         this.id = id;
+        this.title = title;
+        this.genre = genre;
+        this.duration = duration;
+        this.price = price;
     }
 
     public Long getId() {
@@ -73,14 +52,6 @@ public class Movie {
         this.duration = duration;
     }
 
-    public Integer getRating() {
-        return rating;
-    }
-
-    public void setRating(Integer rating) {
-        this.rating = rating;
-    }
-
     public Float getPrice() {
         return price;
     }
@@ -91,12 +62,11 @@ public class Movie {
 
     @Override
     public String toString() {
-        return "Movie{" +
+        return "MovieWithoutRating{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", genre='" + genre + '\'' +
                 ", duration=" + duration +
-                ", rating=" + rating +
                 ", price=" + price +
                 '}';
     }

@@ -19,7 +19,7 @@ public class UserController {
     @Autowired
     IUserService userService;
 
-    @GetMapping("/create")
+    @GetMapping("/readById")
     public String create(Model model) {
         model.addAttribute("user", new UserEntity());
         return "Form";
