@@ -32,13 +32,20 @@ public class MovieImpl implements IMovieService {
     @Override
     public Movie create(MovieWithoutRating movieDTO) {
 
-        Movie request = new Movie(
-                movieDTO.getPrice(),
-                0,
-                movieDTO.getDuration(),
-                movieDTO.getGenre(),
-                movieDTO.getTitle(),
-                null);
+//        Movie request = new Movie(
+//                movieDTO.getPrice(),
+//                0,
+//                movieDTO.getDuration(),
+//                movieDTO.getGenre(),
+//                movieDTO.getTitle(),
+//                null);
+
+        Movie request = Movie.builder()
+                .price(movieDTO.getPrice())
+                .duration(movieDTO.getDuration())
+                .genre(movieDTO.getGenre())
+                .title(movieDTO.getTitle())
+                .build();
 
         return movieRepository.save(request);
     }

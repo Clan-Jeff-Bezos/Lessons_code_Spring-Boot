@@ -1,73 +1,27 @@
 package com.riwi.RiwiMovies.dtos.request;
 
+import jakarta.validation.constraints.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.sql.Time;
 
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class MovieWithoutRating {
-    private Long id;
+    @NotBlank(message = "Title is required")
     private String title;
+
+    @NotBlank(message = "Genre is required")
     private String genre;
+
+    @NotNull(message = "Duration is required")
     private Time duration;
+
+    @NotNull(message = "Price is required")
     private Float price;
-
-    public MovieWithoutRating() {
-    }
-
-    public MovieWithoutRating(Long id, String title, String genre, Time duration, Float price) {
-        this.id = id;
-        this.title = title;
-        this.genre = genre;
-        this.duration = duration;
-        this.price = price;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getGenre() {
-        return genre;
-    }
-
-    public void setGenre(String genre) {
-        this.genre = genre;
-    }
-
-    public Time getDuration() {
-        return duration;
-    }
-
-    public void setDuration(Time duration) {
-        this.duration = duration;
-    }
-
-    public Float getPrice() {
-        return price;
-    }
-
-    public void setPrice(Float price) {
-        this.price = price;
-    }
-
-    @Override
-    public String toString() {
-        return "MovieWithoutRating{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", genre='" + genre + '\'' +
-                ", duration=" + duration +
-                ", price=" + price +
-                '}';
-    }
 }
